@@ -89,7 +89,7 @@ exports.parseOPC = function(data, callback) {
               if (OPCDEBUG) {
                 console.log(pixels.slice(0, pixelCount));
               }
-              if (typeof callback == 'function') callback(pixels, pixelCount);
+              if (typeof callback == 'function') callback(pixels, pixelCount, pktChannel);
             }
             if (pktLength === pixelLimit) {
               parseState = 0;
