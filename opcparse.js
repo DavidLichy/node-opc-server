@@ -84,7 +84,7 @@ exports.parseOPC = function(data, callback) {
             console.log('pixelLimit', pixelLimit, 'pixelCount', pixelCount, 'copyBytes', copyBytes);
           }
           if (pixelCount >= pixelLimit) {
-            if ((pktCommand === 0) && (pktChannel <= 1)) {
+            if ((pktCommand === 0) && (pktChannel <= 255)) {
               // call callback which probably writes the pixels to the LEDs
               if (OPCDEBUG) {
                 console.log(pixels.slice(0, pixelCount));
