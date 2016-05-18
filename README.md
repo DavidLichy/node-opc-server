@@ -1,3 +1,7 @@
+# The Reason For This Fork
+
+I have made this fork to test control of a single long string of WS281x pixels using multiple OPC channels. Each OPC channel is inteneded to control a differnt string of pixels, however I am sending OPC from OLA which only allows 512 RGB channels (170 pixles) per output. By using a multiple channels, each controling a differnt area of the pixel string, a greater number of pixels can be controlled using OLA.
+
 # node-opc-server
 Open Pixel Control protocol parser
 
