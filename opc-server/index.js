@@ -2,13 +2,13 @@
 'use strict';
 
 var ws281x = require('rpi-ws281x-native');
-var NUM_LEDS = parseInt(process.argv[2], 10) || 100;
+var NUM_LEDS = 340;
 console.log('NUM_LEDS', NUM_LEDS);
-var NUM_LEDS_PER_OPC_CHANNEL = parseInt(process.argv[3], 10) || 170;;
+var NUM_LEDS_PER_OPC_CHANNEL = 170;
 console.log('NUM_LEDS_PER_OPC_CHANNEL', NUM_LEDS_PER_OPC_CHANNEL);
 var pixelsUint32 = new Uint32Array(NUM_LEDS);
 ws281x.init(NUM_LEDS);
-var GAMMA_CORRECT = true;
+var GAMMA_CORRECT = false;
 
 // ---- trap the SIGINT and reset before exit
 process.on('SIGINT', function () {
@@ -27,7 +27,7 @@ var server = net.createServer(function(c) { //'connection' listener
   });
   c.on('data', function(data) {
     opcparse.parseOPC(data, function(rgb, count, channel) {
-      //console.log('rgb count', count, 'channel', channel);
+      console.log('rgb count', count, 'channel', channel);
       var channelSize = NUM_LEDS_PER_OPC_CHANNEL * 3;
       var offset = channel * channelSize;
       var limit = offset + channelSize;
